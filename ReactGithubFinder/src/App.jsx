@@ -1,13 +1,13 @@
-import React from "react"
-import "./App.css"
-
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import Navbar from "./components/layout/Navbar"
 function App() {
   return (
-    <div className='flex justify-center'>
-      <h1 className='font-bold text-2xl text-blue-900'>
-        React and Tailwind with Vitejs!
-      </h1>
-    </div>
+    <Router>
+      <div className='flex flex-col justify-between h-screen'>
+        <Navbar />
+        <main>Content</main>
+      </div>
+    </Router>
   )
 }
 
