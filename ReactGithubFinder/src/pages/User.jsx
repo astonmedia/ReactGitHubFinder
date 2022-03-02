@@ -4,13 +4,16 @@ import { useEffect, useContext } from "react"
 import { useParams } from "react-router-dom"
 import Spinner from "../components/layout/Spinner"
 import GithubContext from "../context/github/GithubContext"
+import RepoList from "../components/repos/RepoList"
 
 function User() {
-  const { getUser, user, loading } = useContext(GithubContext)
+  const { getUser, user, loading, getUserRepos, repos } =
+    useContext(GithubContext)
   const params = useParams()
 
   useEffect(() => {
     getUser(params.login)
+    getUserRepos(params.login)
   }, [])
   //Fields from user
   const {
@@ -146,6 +149,7 @@ function User() {
             </div>
           </div>
         </div>
+        <RepoList repos={repos} />
       </div>
     </>
   )
